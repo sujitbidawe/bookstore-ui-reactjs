@@ -1,17 +1,115 @@
+@media screen and (max-width: 1080px) {
+  .NavButtons {
+    overflow: visible;
+    width: 100%;
+  }
+
+  .NavButtons{
+    float: none;
+    flex: 50%;
+    flex-direction: column;
+  }
+}
+
 .App {
-  text-align: center;
+  justify-content: start;
+  margin-left: 85px;
+  margin-right: 85px;
+  outline-style: groove;
+  outline-color: #F5F5F5;
+  outline-width: thin;
+  font-family: fontawesome;
+  /* width: 95%; */
+  /* position: relative; */
 }
 
 .App-header {
-  background-color: white;
-  /* min-height: 100vh; */
-  display: flex;
-  margin-left: 30px;
-  font-size: calc(10px + 2vmin);
-  color: rgb(2, 0, 0);
+  height: 50px;
+  width: 88.5%;
+  position: fixed;
+  color: white;
+  background-color: rgb(129, 29, 29);
 }
 
-.NavClass {
-  margin-top: -80px;
-  margin-left: -800px;
+.NavButtons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 50px;
+}
+
+.bookCompartment {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.Book {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid rgb(202, 198, 198);
+  padding-right: 5px; 
+  padding-left: 5px;
+  margin: 15px;
+  width: 220px;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(75, 30, 20);
+  color: white;
+  height: 50px;
+  font-family: fontawesome;
+}
+
+.wishList {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.bookWish {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  border-bottom: 1px solid rgb(202, 198, 198);
+  padding-right: 5px; 
+  padding-left: 5px;
+  margin: 15px;
+  padding: 20px
+}
+
+.cart {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.cartList {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  /* border-bottom: 1px solid rgb(202, 198, 198); */
+  padding-right: 5px; 
+  padding-left: 5px;
+  margin: 15px;
+  padding: 20px;
+}
+
+.purchaseButton {
+  display: flex;
+  justify-content: space-around;
 }
