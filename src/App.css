@@ -25,8 +25,8 @@
 
 .App-header {
   height: 50px;
-  width: 88.5%;
-  position: fixed;
+  /* width: 88.5%; */
+  /* position: fixed; */
   color: white;
   background-color: rgb(129, 29, 29);
 }
