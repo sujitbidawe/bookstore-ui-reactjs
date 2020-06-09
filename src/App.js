@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
-import Navigation from './Navigation';
-import Wishlist from './Wishlist';
-import Home from "./Home";
-import Cart from "./Cart";
+import Navigation from './components/Navigation';
+import Wishlist from './components/Wishlist';
+import Home from "./components/Home";
+import Cart from "./components/Cart";
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 function App() {
