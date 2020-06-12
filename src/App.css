@@ -95,6 +95,7 @@
   justify-content: center;
   padding-left: 50px;
   padding-right: 50px;
+  /* border: 1px groove grey; */
 }
 
 .cartList {
@@ -102,7 +103,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  /* border-bottom: 1px solid rgb(202, 198, 198); */
+  /* border: 1px solid rgb(202, 198, 198); */
   padding-right: 5px; 
   padding-left: 5px;
   margin: 15px;
@@ -112,4 +113,40 @@
 .purchaseButton {
   display: flex;
   justify-content: space-around;
+  padding-bottom: 20px;
+  padding-right: 80px;
+  justify-content: flex-end;
+}
+.customerDetails {
+  display: flex;
+  flex-direction: column;
+  border: 1px groove grey;
+  padding: 20px;
+  margin-bottom: 20px;
+  
+}
+
+.detailsInput {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+}
+
+.OrderSummary {
+  display: flex;
+  flex-direction: column;
+  border: 1px groove grey;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.orderList {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* border: 1px solid rgb(202, 198, 198); */
+  padding-right: 5px; 
+  padding-left: 5px;
+  margin: 15px;
+  padding: 20px; 
 }

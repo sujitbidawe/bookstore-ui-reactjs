@@ -24,7 +24,7 @@ export default class About extends Component {
         return (
             <div className="wishList">
                 <h1 style={{ color: "brown" }}>
-                    Items In wishList
+                    My WishList
                 </h1>
                 {this.state.bookList.map(book => (
                     <div className="bookWish" key={book.id}>
@@ -36,7 +36,7 @@ export default class About extends Component {
                             <h5 style={{ height: "0px", opacity: '0.5' }}>By {book.authorName}</h5>
                             <h4 style={{ height: "0px" }}>Rs. {book.price}</h4></div>
                         <div>
-                            <button style={{ backgroundColor: 'brown', color: 'white', width: '100px', height: '25px' }}>ADD TO CART</button>
+                            <button style={{ backgroundColor: 'brown', color: 'white', width: '110px', height: '25px' }}>ADD TO CART</button>
                             <button style={{ fontFamily: "fontawesome", width: '100px', height: '25px', marginLeft: '3.5px' }}>&#xf08A; REMOVE</button>
                         </div>
                     </div>

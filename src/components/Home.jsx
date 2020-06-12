@@ -29,12 +29,12 @@ export default class Home extends Component {
                         <h5 style={{ height: "0px", opacity: '0.5' }}>By {book.authorName}</h5>
                         <h4 style={{ height: "0px" }}>Rs. {book.price}</h4>
                         <div style={{padding:"2px"}}>
-                            <button style={{ backgroundColor: 'brown', color: 'white', width: '100px', height: '25px' }}>ADD TO CART</button>
+                            <button style={{ backgroundColor: 'brown', color: 'white', width: '110px',height: '25px' }}>ADD TO CART</button>
                             <button style={{ fontFamily: "fontawesome", width: '100px', height: '25px', marginLeft: '3.5px' }}>&#xf08A; WISHLIST</button>
                         </div>
                     </div>
                 ))}
-            </div>
+                </div>
         );
     }
 }
