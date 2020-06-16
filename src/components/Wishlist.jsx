@@ -12,7 +12,7 @@ export default class About extends Component {
     }
 
     async componentDidMount() {
-        await bookData.getWishList(response => {
+        await bookData.getAllWishlistBook(response => {
             this.setState({
                 bookList: response
             })
@@ -29,11 +29,11 @@ export default class About extends Component {
                 {this.state.bookList.map(book => (
                     <div className="bookWish" key={book.id}>
                         <div>
-                            <img style={{ height: '150px', width: '120px' }} src={book.image} alt="" />
+                            <img style={{ height: '150px', width: '120px' }} src={book.picPath} alt="" />
                         </div>
                         <div>
-                            <h4 style={{ height: "0px" }}>{book.bookTitle}</h4>
-                            <h5 style={{ height: "0px", opacity: '0.5' }}>By {book.authorName}</h5>
+                            <h4 style={{ height: "0px" }}>{book.nameOfBook}</h4>
+                            <h5 style={{ height: "0px", opacity: '0.5' }}>By {book.author}</h5>
                             <h4 style={{ height: "0px" }}>Rs. {book.price}</h4></div>
                         <div>
                             <button style={{ backgroundColor: 'brown', color: 'white', width: '110px', height: '25px' }}>ADD TO CART</button>
