@@ -36,9 +36,9 @@ export default class Home extends Component {
                 <div className="bookCompartment">
                     {this.state.bookList.map(book => (
                         <div className="Book" key={book.id}>
-                            <img style={{ height: '150px', width: '120px' }} src={book.image} alt="" />
-                            <h4 style={{ height: "0px", justifySelf: "center" }}>{book.bookTitle}</h4>
-                            <h5 style={{ height: "0px", opacity: '0.5' }}>By {book.authorName}</h5>
+                            <img style={{ height: '150px', width: '120px' }} src={book.picPath} alt="" />
+                            <h4 style={{ height: "0px", justifySelf: "center", textAlign:"center" }}>{book.nameOfBook}</h4>
+                            <h5 style={{ height: "0px", opacity: '0.5' }}>By {book.author}</h5>
                             <h4 style={{ height: "0px" }}>Rs. {book.price}</h4>
                             <div style={{ padding: "2px" }}>
                                 <button style={{ backgroundColor: 'brown', color: 'white', width: '110px', height: '25px' }}>ADD TO CART</button>
