@@ -4,7 +4,7 @@ export default class CustomerDetails extends Component {
 
     render() {
         return (
-            <div className="customerDetails">
+            <div className="customerDetails" id="cust">
                 <div>
                     <h3>Customer Details</h3>
                 </div>
@@ -31,7 +31,7 @@ export default class CustomerDetails extends Component {
                     <label for="female">Work</label>
                     <input type="radio" id="other" name="type" value="other" />
                     <label for="other">Other</label>
-                    <button style={{ backgroundColor: 'rgb(114, 134, 189)', color: 'white', height: "30px", width: "200px", marginLeft: "560px", fontSize: "25px" }}>CONTINUE</button>
+                    <button onClick={this.toggleSummaryView} style={{ backgroundColor: 'rgb(114, 134, 189)', color: 'white', height: "30px", width: "200px", marginLeft: "560px", fontSize: "25px" }}>CONTINUE</button>
                 </div>
             </div>
         )

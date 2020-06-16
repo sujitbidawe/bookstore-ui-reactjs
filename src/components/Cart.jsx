@@ -9,7 +9,9 @@ export default class Cart extends Component {
     constructor() {
         super()
         this.state = {
-            bookList: []
+            bookList: [],
+            detailsEnabled: false,
+            summaryEnabled: false
         }
     }
 
@@ -20,6 +22,18 @@ export default class Cart extends Component {
             })
         });
         console.log(this.state.bookList);
+    }
+
+    toggleDetailsView = () => {
+        this.setState({
+            detailsEnabled : !this.state.detailsEnabled
+        })
+    }
+
+    toggleSummaryView = () => {
+        this.setState({
+            summaryEnabled : !this.state.summaryEnabled
+        })
     }
 
     render() {
@@ -45,18 +59,24 @@ export default class Cart extends Component {
                             </div>
                         </div>
                     ))}
-                    <div className="purchaseButton">
+                    <div className="purchaseButton" onClick={this.toggleDetailsView}>
                         {/* <text style={{ fontSize: "25px" }}>TOTAL : </text> */}
-                        <button style={{ height: "30px", width: "200px", backgroundColor: "rgb(114, 134, 189)", color: "white", fontSize: "25px" }}> PLACE ORDER </button>
+                        <button onClick={this.toggleSummaryView} style={{ height: "30px", width: "200px", backgroundColor: "rgb(114, 134, 189)", color: "white", fontSize: "25px" }}> PLACE ORDER </button>
                     </div>
                 </div>
-                <div>
+
+                {this.state.detailsEnabled &&
+                    <div>
                     <CustomerDetails />
                 </div>
-                <div>
-                    <OrderSummary />
+
+                }
+                {this.state.summaryEnabled &&
+                    <div>
+                        <OrderSummary />
+                    </div>
+                }
                 </div>
-            </div>
         );
     }
 }
