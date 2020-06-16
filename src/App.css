@@ -168,3 +168,11 @@
   flex-direction: column;
   align-items: center;
 }
+
+.cartIcon {
+  color: white;
+  text-decoration: none;
+  font-family: fontawesome;
+  margin: 20px
+}
+
