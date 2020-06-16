@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import BookData from './BookDataLayer';
-import OrderConfirm from './OrderConfirm';
 
 var bookData = new BookData();
 
@@ -39,7 +38,7 @@ export default class OrderSummary extends Component {
                     </div>
                 ))}
                 <div className="purchaseButton">
-                    <button>CHECKOUT </button>
+                    <button href="/Order">CHECKOUT </button>
                 </div>
             </div>
         )
