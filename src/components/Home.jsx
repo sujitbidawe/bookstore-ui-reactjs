@@ -12,11 +12,19 @@ export default class Home extends Component {
     }
 
     async componentDidMount() {
-        await bookData.getBooks(response => {
+        await bookData.getAllBooks(response => {
             this.setState({
                 bookList: response
             })
         });
+    }
+
+    handleClickAddToCart = (e) => {
+        bookData.addToCart(101, e, 1)
+    }
+
+    handleClickAddToWishlist = (e) => {
+        bookData.addToWishlist(101, e)
     }
 
     render() {
@@ -41,8 +49,8 @@ export default class Home extends Component {
                             <h5 style={{ height: "0px", opacity: '0.5' }}>By {book.author}</h5>
                             <h4 style={{ height: "0px" }}>Rs. {book.price}</h4>
                             <div style={{ padding: "2px" }}>
-                                <button style={{ backgroundColor: 'brown', color: 'white', width: '110px', height: '25px' }}>ADD TO CART</button>
-                                <button style={{ fontFamily: "fontawesome", width: '100px', height: '25px', marginLeft: '3.5px' }}>&#xf08A; WISHLIST</button>
+                                <button onClick={() => this.handleClickAddToCart(book.id)} style={{ backgroundColor: 'brown', color: 'white', width: '110px', height: '25px' }}>ADD TO CART</button>
+                                <button onClick={() => this.handleClickAddToWishlist(book.id)} style={{ fontFamily: "fontawesome", width: '100px', height: '25px', marginLeft: '3.5px' }}>&#xf08A; WISHLIST</button>
                             </div>
                         </div>
                     ))}
