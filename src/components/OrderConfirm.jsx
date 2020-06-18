@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Order from '../graphics/Order.jpg'
 
 export default class OrderConfirm extends Component {
 
@@ -10,13 +11,7 @@ export default class OrderConfirm extends Component {
         return (
             <div className="OrderConfirm">
                 <div className="orderPlaced">
-
-                    <h2>
-                        Order Placed Successfully!
-                    </h2>
-                    <img src="http://www.pngall.com/wp-content/uploads/1/Celebration-PNG-Transparent-HD-Photo.png" alt="">
-
-                    </img>
+                    <img src={Order} alt=""></img>
                 </div>
                 <p>Hurray! Your order is confirmed.</p>
                 <p>The order ID is #123456, save the order ID</p>
