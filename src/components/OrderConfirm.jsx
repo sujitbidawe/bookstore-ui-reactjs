@@ -14,7 +14,7 @@ export default class OrderConfirm extends Component {
                     <h2>
                         Order Placed Successfully!
                     </h2>
-                    <img src="http://www.pngall.com/wp-content/uploads/1/Celebration-PNG-Transparent-HD-Photo.png">
+                    <img src="http://www.pngall.com/wp-content/uploads/1/Celebration-PNG-Transparent-HD-Photo.png" alt="">
 
                     </img>
                 </div>
