@@ -27,6 +27,30 @@ export default class Home extends Component {
         bookData.addToWishlist(101, e)
     }
 
+    handleSort = (e) => {
+        if(e.target.value === "price: low to high"){
+            bookData.getAllBookAsc(response => {
+                this.setState({
+                    bookList: response.content
+                })
+            });
+        }
+        else if(e.target.value === "price: high to low"){
+            bookData.getAllBookDesc(response => {
+                this.setState({
+                    bookList: response.content
+                })
+            });
+        }
+        else{
+            bookData.getAllBooks(response => {
+                this.setState({
+                    bookList: response
+                })
+            });
+        }
+    }
+
     render() {
         return (
             <div >
@@ -34,7 +58,8 @@ export default class Home extends Component {
                     <h3>
                         Books ({this.state.bookList.length})
                     </h3>
-                    <select name="sort" id="sort" style={{height:'40px'}}>
+                    {/* <select name="sort" id="sort" onChange={(e) => this.setState({ value: e.target.value })} style={{height:'40px'}}> */}
+                    <select name="sort" id="sort" onChange={this.handleSort} style={{height:'40px'}}>
                         <option value="relevance">relevance</option>
                         <option value="price: low to high">price: low to high</option>
                         <option value="price: high to low">price: high to low</option>
