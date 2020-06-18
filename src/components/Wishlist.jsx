@@ -45,7 +45,7 @@ export default class About extends Component {
         return (
             <div className="wishList">
                 <h1 style={{ color: "brown" }}>
-                    My WishList
+                    WishList({this.state.bookList.length})
                 </h1>
                 {this.state.bookList.map(book => (
                     <div className="bookWish" key={book.id}>
