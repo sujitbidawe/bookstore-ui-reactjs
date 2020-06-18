@@ -1,23 +1,28 @@
 import React, { Component } from "react";
 import BookData from './BookDataLayer';
+import { Link } from 'react-router-dom';
+
+import OrderConfirm from './OrderConfirm';
 
 var bookData = new BookData();
 
 export default class OrderSummary extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
+        console.log("message from constructor")
         this.state = {
-            bookList: []
+            summaryBookList: []
         }
     }
 
     async componentDidMount() {
-        await bookData.getCartItems(response => {
+        console.log("I am a message")
+        await bookData.getAllCartBook(response => {
             this.setState({
-                bookList: response
+                summaryBookList: response
             })
         });
-        console.log(this.state.bookList);
+        console.log(this.state.summaryBookList);
     }
 
     render() {
@@ -25,20 +30,23 @@ export default class OrderSummary extends Component {
             <div className="OrderSummary">
                 <div>
                     <h3>Order Summary</h3>
-                </div>
-                {this.state.bookList.map(book => (
+                {this.state.summaryBookList.map(book => (
                     <div className="orderList" key={book.id}>
                         <div>
-                            <img style={{ height: '150px', width: '120px' }} src={book.image} alt="" />
+                            <img style={{ height: '150px', width: '120px' }} src={book.picPath} alt="" />
                         </div>
                         <div>
-                            <h4 style={{ height: "0px", marginLeft: "20px" }}>{book.bookTitle}</h4>
-                            <h5 style={{ height: "0px", opacity: '0.5', marginLeft: "20px" }}>By {book.authorName}</h5>
+                            <h4 style={{ height: "0px", marginLeft: "20px" }}>{book.nameOfBook}</h4>
+                            <h5 style={{ height: "0px", opacity: '0.5', marginLeft: "20px" }}>By {book.author}</h5>
                             <h4 style={{ height: "0px", marginLeft: "20px" }}>Rs. {book.price}</h4></div>
                     </div>
                 ))}
-                <div className="purchaseButton">
-                    <button href="/Order">CHECKOUT </button>
+                                </div>
+
+                <div style={{display:"flex", alignItems:"flex-end"}}>
+                <Link to="/Order" style={{textDecoration:"none"}}>
+                    <button className="checkoutButton">CHECKOUT </button>
+                </Link>
                 </div>
             </div>
         )
