@@ -1,16 +1,17 @@
 import React, { Component } from "react";
 import BookData from './BookDataLayer';
 import CustomerDetails from './Customerdetails';
+import { connect } from 'react-redux';
 
 var bookData = new BookData();
 
-export default class Cart extends Component {
+class Cart extends Component {
     constructor() {
         super()
         this.state = {
             bookList: [],
             detailsEnabled: false,
-            detailsVisibility: {display: 'none'}
+            detailsVisibility: { display: 'none' },
         }
     }
 
@@ -18,8 +19,10 @@ export default class Cart extends Component {
         await bookData.getAllCartBook(response => {
             this.setState({
                 bookList: response,
+                bookCount: response.length
             })
         });
+        this.props.dispatch({ type: "methodCalled", payload: this.state.bookList.length })
     }
 
     async handleChangeBookRemove(e) {
@@ -28,18 +31,21 @@ export default class Cart extends Component {
             this.setState({
                 bookList: response
             })
-        })
+        });
+        // console.log("remove book", this.state.bookList.length)
+        this.props.dispatch({ type: "methodCalled", payload: this.state.bookList.length })
     }
 
     async handleChangeBookDec(e) {
         let q = e.bookQuantity - 1;
+        // console.log("bookLength from cart",this.state.bookList.length)
         await bookData.updateCart(101, e.id, q)
         await bookData.getAllCartBook(response => {
             this.setState({
                 bookList: response
             })
         })
-        await window.location.reload(true)
+        this.props.dispatch({ type: "methodCalled", payload: this.state.bookList.length })
     }
 
     async handleChangeBookInc(e) {
@@ -50,30 +56,19 @@ export default class Cart extends Component {
                 bookList: response
             })
         })
-        window.location.reload(true)
+        this.props.dispatch({ type: "methodCalled", payload: this.state.bookList.length })
     }
 
-    async handleAddToWishlist(e) {
-        await bookData.addToWishlist(101, e)
-        await bookData.removeFromCart(101, e, 1)
-        await bookData.getAllCartBook(response => {
-            this.setState({
-                bookList: response
-            })
-        })
-    }
-
-    toggleDetailsView = async() => {
-        console.log("before click cart",this.state.detailsEnabled)
+    toggleDetailsView = async () => {
         await this.setState({
             detailsEnabled: true,
-            detailsVisibility: {display: 'flex'}
+            detailsVisibility: { display: 'flex' }
 
         })
-        console.log("after click cart",this.state.detailsEnabled)
     }
 
     render() {
+        this.props.dispatch({ type: "methodCalled", payload: this.state.bookList.length });
         return (
             <div className="cart">
                 <br />
@@ -96,7 +91,6 @@ export default class Cart extends Component {
                                 <button style={{ borderRadius: '25px' }} onClick={() => this.handleChangeBookInc(book)} >+</button>
                             </span>
                             <div>
-                                <button onClick={() => this.handleAddToWishlist(book.id)} style={{ backgroundColor: 'brown', color: 'white', width: '150px', height: '30px' }}>MOVE TO WISHLIST</button>
                                 <button onClick={() => this.handleChangeBookRemove(book.id)} style={{ fontFamily: "fontawesome", width: '100px', height: '30px', marginLeft: '3.5px' }}>REMOVE</button>
                             </div>
                         </div>
@@ -105,10 +99,16 @@ export default class Cart extends Component {
                         <button onClick={this.toggleDetailsView} style={{ height: "30px", width: "200px", backgroundColor: "rgb(114, 134, 189)", color: "white", fontSize: "25px" }}> PLACE ORDER </button>
                     </div>
                 </div>
-                    <div  style={this.state.detailsEnabled===true ? {display:"flex"} : {display:"none"}}>
-                        <CustomerDetails toggleDetailsView={this.toggleDetailsView}/>
-                    </div>
+                <div style={this.state.detailsEnabled === true ? { display: "flex" } : { display: "none" }}>
+                    <CustomerDetails toggleDetailsView={this.toggleDetailsView} />
+                </div>
             </div>
         );
     }
 }
+
+const mapStateToProps = (state) => ({
+    cartCount: state.cartCount
+});
+
+export default connect(mapStateToProps)(Cart);
