@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import BookData from './BookDataLayer';
+import { connect } from 'react-redux';
 
 var bookData = new BookData();
 
-export default class Home extends Component {
+class Home extends Component {
     constructor() {
         super()
         this.state = {
-            bookList: []
+            bookList: [],
+            cartCount: 0,
+            wishCount: 0
         }
     }
 
@@ -19,30 +22,36 @@ export default class Home extends Component {
         });
     }
 
-    handleClickAddToCart = (e) => {
-        bookData.addToCart(101, e, 1)
+    handleClickAddToCart = async (e) => {
+        await bookData.addToCart(101, e, 1)
+        await bookData.getAllCartBook(response => {
+            this.props.dispatch({ type: "methodCalled", payload: response.length })
+        })
     }
 
-    handleClickAddToWishlist = (e) => {
-        bookData.addToWishlist(101, e)
+    handleClickAddToWishlist = async (e) => {
+        await bookData.addToWishlist(101, e)
+        await bookData.getAllWishlistBook(response => {
+            this.props.dispatch({ type: "wishListUpdate", payload: response.length })
+        })
     }
 
     handleSort = (e) => {
-        if(e.target.value === "price: low to high"){
+        if (e.target.value === "price: low to high") {
             bookData.getAllBookAsc(response => {
                 this.setState({
                     bookList: response.content
                 })
             });
         }
-        else if(e.target.value === "price: high to low"){
+        else if (e.target.value === "price: high to low") {
             bookData.getAllBookDesc(response => {
                 this.setState({
                     bookList: response.content
                 })
             });
         }
-        else{
+        else {
             bookData.getAllBooks(response => {
                 this.setState({
                     bookList: response
@@ -54,12 +63,11 @@ export default class Home extends Component {
     render() {
         return (
             <div >
-                <div style={{display:"flex", flexDirection:"row", justifyContent:"space-between", paddingLeft:"100px", paddingRight:"100px", paddingTop:"20px"}}>
+                <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", paddingLeft: "100px", paddingRight: "100px", paddingTop: "20px" }}>
                     <h3>
                         Books ({this.state.bookList.length})
                     </h3>
-                    {/* <select name="sort" id="sort" onChange={(e) => this.setState({ value: e.target.value })} style={{height:'40px'}}> */}
-                    <select name="sort" id="sort" onChange={this.handleSort} style={{height:'40px'}}>
+                    <select name="sort" id="sort" onChange={this.handleSort} style={{ height: '40px' }}>
                         <option value="relevance">relevance</option>
                         <option value="price: low to high">price: low to high</option>
                         <option value="price: high to low">price: high to low</option>
@@ -70,7 +78,7 @@ export default class Home extends Component {
                     {this.state.bookList.map(book => (
                         <div className="Book" key={book.id}>
                             <img style={{ height: '150px', width: '120px' }} src={book.picPath} alt="" />
-                            <h4 style={{ height: "0px", justifySelf: "center", textAlign:"center" }}>{book.nameOfBook}</h4>
+                            <h4 style={{ height: "0px", justifySelf: "center", textAlign: "center" }}>{book.nameOfBook}</h4>
                             <h5 style={{ height: "0px", opacity: '0.5' }}>By {book.author}</h5>
                             <h4 style={{ height: "0px" }}>Rs. {book.price}</h4>
                             <div style={{ padding: "2px" }}>
@@ -84,3 +92,10 @@ export default class Home extends Component {
         );
     }
 }
+
+const mapStateToProps = (state) => ({
+    cartCount: state.cartCount,
+    wishListCount: state.wishListCount
+});
+
+export default connect(mapStateToProps)(Home);
