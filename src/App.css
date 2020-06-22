@@ -192,3 +192,26 @@
   background-color: rgb(114, 134, 189);
   color: white;  
 }
+
+/* Login & SignIn button */
+.button {
+  background-color:white;
+  color:black;
+  justify-content: center;
+  align-items: flex-start;
+  font-size: 20px;
+}
+
+.login-box{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 420px;
+  margin-right: 420px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: white;
+  background-color: rgb(129, 5, 5);
+  border: 2px groove black;
+}
