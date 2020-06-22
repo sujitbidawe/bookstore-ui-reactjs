@@ -50,7 +50,6 @@ export default class App extends Component {
   }
 
   async componentDidMount() {
-    {
       await bookData.getAllCartBook(response => {
         this.setState({
           cartBookCount: response.length
@@ -63,7 +62,6 @@ export default class App extends Component {
         })
       });
       // console.log("i am groot", this.state.wishBookCount);
-    }
   }
 
   render() {
