@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import BookData from './BookDataLayer';
+import { connect } from 'react-redux';
 
 var bookData = new BookData();
 
-export default class About extends Component {
+class WishList extends Component {
     constructor() {
         super()
         this.state = {
-            bookList: []
+            bookList: [],
+            cartBookCount: 0
         }
     }
 
@@ -17,31 +19,41 @@ export default class About extends Component {
                 bookList: response
             })
         });
-        console.log(this.state.bookList);
+        this.props.dispatch({ type: "wishListUpdate", payload: this.state.bookList.length });
+        // console.log(this.state.bookList);
     }
 
-    handleClickAddToCart = (e) => {
-        bookData.addToCart(101, e, 1)
-        bookData.removeFromWishList(101, e)
-        bookData.getAllWishlistBook(response => {
+    handleClickAddToCart = async (e) => {
+        await bookData.addToCart(101, e, 1)
+        await bookData.removeFromWishList(101, e)
+        await bookData.getAllWishlistBook(response => {
             this.setState({
                 bookList: response
             })
         })
-        window.location.reload(true)
+        this.props.dispatch({ type: "wishListUpdate", payload: this.state.bookList.length });
+        await bookData.getAllCartBook(response => {
+            this.setState({
+                cartBookCount: response.length
+            })
+        })
+        this.props.dispatch({ type: "methodCalled", payload: this.state.cartBookCount });
+        // window.location.reload(true)
     }
 
-    handleRemoveFromWishList = (e) => {
-        bookData.removeFromWishList(101, e)
-        bookData.getAllWishlistBook(response => {
+    handleRemoveFromWishList = async (e) => {
+        await bookData.removeFromWishList(101, e)
+        await bookData.getAllWishlistBook(response => {
             this.setState({
                 bookList: response
             })
         })
-        window.location.reload(true)
+        this.props.dispatch({ type: "wishListUpdate", payload: this.state.bookList.length });
+        // window.location.reload(true)
     }
 
     render() {
+        this.props.dispatch({ type: "wishListUpdate", payload: this.state.bookList.length });
         return (
             <div className="wishList">
                 <h1 style={{ color: "brown" }}>
@@ -66,3 +78,9 @@ export default class About extends Component {
         );
     }
 }
+
+const mapStateToProps = (state) => ({
+    wishListCount: state.wishListCount
+});
+
+export default connect(mapStateToProps) (WishList);
