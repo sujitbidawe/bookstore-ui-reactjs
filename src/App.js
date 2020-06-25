@@ -80,9 +80,9 @@ export default class App extends Component {
                 <Route path="/cart" component={Cart} exact />
                 <Route path="/Wishlist" component={Wishlist} exact />
                 <Route path="/Order" component={OrderConfirm} exact />
-                <Route path="/signin" component={SignIn}/>
-                <Route path="/signup" component={SignUp}/>
-                <Route path="/resetpassword" component={ResetPassword} />
+                <Route path="/signin" component={SignIn} exact />
+                <Route path="/signup" component={SignUp} exact />
+                <Route path="/resetpassword" component={ResetPassword} exact />
               </Switch>
             </BrowserRouter>
           </div>
