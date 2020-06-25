@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Order from '../graphics/Order.jpg'
+import Order from '../Assets/Order.jpg'
 
 export default class OrderConfirm extends Component {
 
