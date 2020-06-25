@@ -16,7 +16,8 @@ export class SignUp extends Component {
                         Create an account
                     </h3>
                 </div>
-                <div style={{ padding: "10px", display: "flex", flexDirection: "column" }}>
+                <div style={{ display: "flex", flexDirection: "column", width: "300px", padding: "10px" }}>
+                    <input style={{ padding: "10px", margin: "5px" }} placeholder="Name"></input>
                     <input style={{ padding: "10px", margin: "5px" }} placeholder="Email"></input>
                     <input style={{ padding: "10px", margin: "5px" }} placeholder="Username"></input>
                     <input style={{ padding: "10px", margin: "5px" }} placeholder="Password"></input>
@@ -27,8 +28,8 @@ export class SignUp extends Component {
                         <button className="button">Signup</button>
                     </Link>
                 </div>
-                <div style={{ padding: "10px", margin:"5px", display: "flex", flexDirection: "row", fontSize:"20px" }}>
-                     <a style={{color:"white", padding: "5px", textDecoration:"none"}} href="/signin">Already have an account? signin!</a>
+                <div style={{ padding: "10px", margin: "5px", display: "flex", flexDirection: "row", fontSize: "20px" }}>
+                    <a style={{ color: "white", padding: "5px", textDecoration: "none" }} href="/signin">Already have an account? signin!</a>
                 </div>
             </div>
         )
