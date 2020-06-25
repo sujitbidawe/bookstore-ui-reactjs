@@ -1,7 +1,7 @@
 export default class BookData {
 
-    getAllBooks(callback) {
-        fetch('http://127.0.0.1:8080/verifyaccount/all')
+    async getAllBooks(callback) {
+        await fetch('http://127.0.0.1:8080/verifyaccount/all')
             .then(res => res.json())
             .then(values => callback(values))
     }
@@ -17,8 +17,8 @@ export default class BookData {
         .then(values => callback(values))
     }
 
-    getAllWishlistBook(callback) {
-        fetch("http://127.0.0.1:8080/home/user/wishlist/getall", {
+    async getAllWishlistBook(callback) {
+        await fetch("http://127.0.0.1:8080/home/user/wishlist/getall", {
             method: 'GET',
             headers: {
                 "token": localStorage.getItem("token")
@@ -28,8 +28,8 @@ export default class BookData {
         .then(values => callback(values))
     }
 
-    addToCart(bookId, quantity) {
-        fetch("http://127.0.0.1:8080/home/user/cart/add-update", {
+    async addToCart(bookId, quantity) {
+        await fetch("http://127.0.0.1:8080/home/user/cart/add-update", {
         method: 'PUT',
         headers: {
             "content-type": "Application/json",
@@ -40,8 +40,8 @@ export default class BookData {
         .then(res => console.log(res))
     }
 
-    addToWishlist(userId, bookId) {
-        fetch("http://127.0.0.1:8080/home/user/wishlist/add", {
+    async addToWishlist(userId, bookId) {
+        await fetch("http://127.0.0.1:8080/home/user/wishlist/add", {
         method: 'PUT',
         headers: {
             "content-type": "Application/json",
@@ -52,20 +52,20 @@ export default class BookData {
         .then(res => console.log(res))
     }
 
-    getAllBookAsc(callback) {
-        fetch('http://127.0.0.1:8080/verifyaccount/sort-asc/price')
+    async getAllBookAsc(callback) {
+        await fetch('http://127.0.0.1:8080/verifyaccount/sort-asc/price')
             .then(res => res.json())
             .then(values => callback(values))
     }
 
-    getAllBookDesc(callback) {
-        fetch('http://127.0.0.1:8080/verifyaccount/sort-desc/price')
+    async getAllBookDesc(callback) {
+        await fetch('http://127.0.0.1:8080/verifyaccount/sort-desc/price')
             .then(res => res.json())
             .then(values => callback(values))
     }
 
-    updateCart(bookId, quantity) {
-        fetch("http://127.0.0.1:8080/home/user/cart/add-update", {
+    async updateCart(bookId, quantity) {
+        await fetch("http://127.0.0.1:8080/home/user/cart/add-update", {
         method: 'PUT',
         headers: {
             "content-type": "Application/json",
@@ -76,8 +76,8 @@ export default class BookData {
         .then(res => console.log(res))
     }
 
-    removeFromCart(bookId, quantity){
-        fetch("http://127.0.0.1:8080/home/user/cart/remove", {
+    async removeFromCart(bookId, quantity){
+        await fetch("http://127.0.0.1:8080/home/user/cart/remove", {
             method: 'PUT',
             headers: {
                 "content-type": "Application/json",
@@ -88,8 +88,8 @@ export default class BookData {
             .then(res => console.log(res))
     }    
 
-    removeFromWishList(userId, bookId){
-        fetch("http://127.0.0.1:8080/home/user/wishlist/remove", {
+    async removeFromWishList(userId, bookId){
+        await fetch("http://127.0.0.1:8080/home/user/wishlist/remove", {
         method: 'PUT',
         headers: {
             "content-type": "Application/json",
@@ -100,15 +100,15 @@ export default class BookData {
         .then(res => console.log(res))
     }
     
-    getAllSearchBook(searchText, callback) {
+    async getAllSearchBook(searchText, callback) {
         console.log("text", searchText)
-        fetch(`http://127.0.0.1:8080/verifyaccount/searchbooks/${searchText}`)
+        await fetch(`http://127.0.0.1:8080/verifyaccount/searchbooks/${searchText}`)
         .then(res => res.json())
         .then(values => callback(values))
     }
 
-    signUpData(username, password, email, phoneNo, role){
-        fetch("http://127.0.0.1:8080/api/auth/signup", {
+    async signUpData(username, password, email, phoneNo, role){
+        await fetch("http://127.0.0.1:8080/api/auth/signup", {
             method: 'POST',
             headers: {
                 "content-type": "Application/json"
@@ -124,8 +124,8 @@ export default class BookData {
             .then(res => console.log(res))
     }
 
-    signInData(username, password){
-        fetch("http://127.0.0.1:8080/api/auth/signin", {
+    async signInData(username, password){
+        await fetch("http://127.0.0.1:8080/api/auth/signin", {
             method: 'POST',
             headers: {
                 "content-type": "Application/json"
