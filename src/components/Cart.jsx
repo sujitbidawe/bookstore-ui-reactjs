@@ -26,7 +26,7 @@ class Cart extends Component {
     }
 
     async handleChangeBookRemove(e) {
-        await bookData.removeFromCart(101, e, 1)
+        await bookData.removeFromCart(e, 1)
         await bookData.getAllCartBook(response => {
             this.setState({
                 bookList: response

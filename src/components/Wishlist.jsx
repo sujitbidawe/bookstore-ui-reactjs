@@ -15,17 +15,17 @@ class WishList extends Component {
 
     async componentDidMount() {
         await bookData.getAllWishlistBook(response => {
+            console.log("response: ", response)
             this.setState({
                 bookList: response
             })
         });
         this.props.dispatch({ type: "wishListUpdate", payload: this.state.bookList.length });
-        // console.log(this.state.bookList);
     }
 
     handleClickAddToCart = async (e) => {
-        await bookData.addToCart(101, e, 1)
-        await bookData.removeFromWishList(101, e)
+        await bookData.addToCart(e, 1)
+        await bookData.removeFromWishList(e)
         await bookData.getAllWishlistBook(response => {
             this.setState({
                 bookList: response
@@ -38,18 +38,16 @@ class WishList extends Component {
             })
         })
         this.props.dispatch({ type: "methodCalled", payload: this.state.cartBookCount });
-        // window.location.reload(true)
     }
 
     handleRemoveFromWishList = async (e) => {
-        await bookData.removeFromWishList(101, e)
+        await bookData.removeFromWishList(e)
         await bookData.getAllWishlistBook(response => {
             this.setState({
                 bookList: response
             })
         })
         this.props.dispatch({ type: "wishListUpdate", payload: this.state.bookList.length });
-        // window.location.reload(true)
     }
 
     render() {

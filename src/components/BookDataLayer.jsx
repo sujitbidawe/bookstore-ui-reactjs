@@ -40,14 +40,14 @@ export default class BookData {
         .then(res => console.log(res))
     }
 
-    async addToWishlist(userId, bookId) {
+    async addToWishlist(bookId) {
         await fetch("http://127.0.0.1:8080/home/user/wishlist/add", {
         method: 'PUT',
         headers: {
             "content-type": "Application/json",
             "token": localStorage.getItem("token")
         },
-        body: JSON.stringify({"bookId": bookId, "userId": userId})})
+        body: JSON.stringify({"bookId": bookId})})
         .then(res => res.text())
         .then(res => console.log(res))
     }
@@ -88,14 +88,14 @@ export default class BookData {
             .then(res => console.log(res))
     }    
 
-    async removeFromWishList(userId, bookId){
+    async removeFromWishList(bookId){
         await fetch("http://127.0.0.1:8080/home/user/wishlist/remove", {
         method: 'PUT',
         headers: {
             "content-type": "Application/json",
             "token": localStorage.getItem("token")
         },
-        body: JSON.stringify({"bookId": bookId, "userId": userId})})
+        body: JSON.stringify({"bookId": bookId})})
         .then(res => res.text())
         .then(res => console.log(res))
     }

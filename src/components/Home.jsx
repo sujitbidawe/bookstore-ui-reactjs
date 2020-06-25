@@ -23,14 +23,14 @@ class Home extends Component {
     }
 
     handleClickAddToCart = async (e) => {
-        await bookData.addToCart(101, e, 1)
+        await bookData.addToCart(e, 1)
         await bookData.getAllCartBook(response => {
             this.props.dispatch({ type: "methodCalled", payload: response.length })
         })
     }
 
     handleClickAddToWishlist = async (e) => {
-        await bookData.addToWishlist(101, e)
+        await bookData.addToWishlist(e)
         await bookData.getAllWishlistBook(response => {
             this.props.dispatch({ type: "wishListUpdate", payload: response.length })
         })
