@@ -7,39 +7,49 @@ export default class BookData {
     }
 
     getAllCartBook(callback) {
-        fetch("http://127.0.0.1:8080/home/user/cart/getall/101")
-            .then(res => res.json())
-            .then(values => callback(values))
+        fetch("http://127.0.0.1:8080/home/user/cart/getall", {
+            method: 'GET',
+            headers: {
+                "content-type": "Application/json",
+                "token": localStorage.getItem("token")
+            }})
+        .then(res => res.json())
+        .then(values => callback(values))
     }
 
     getAllWishlistBook(callback) {
-        fetch("http://127.0.0.1:8080/home/user/wishlist/getall/101")
-            .then(res => res.json())
-            .then(values => callback(values))
+        fetch("http://127.0.0.1:8080/home/user/wishlist/getall", {
+            method: 'GET',
+            headers: {
+                "token": localStorage.getItem("token")
+            }
+        })
+        .then(res => res.json())
+        .then(values => callback(values))
     }
 
-    addToCart(userId, bookId, quantity) {
+    addToCart(bookId, quantity) {
         fetch("http://127.0.0.1:8080/home/user/cart/add-update", {
-            method: 'PUT',
-            headers: {
-                "content-type": "Application/json"
-            },
-            body: JSON.stringify({ "bookId": bookId, "bookQuantity": quantity, "userId": userId })
-        })
-            .then(res => res.text())
-            .then(res => console.log(res))
+        method: 'PUT',
+        headers: {
+            "content-type": "Application/json",
+            "token": localStorage.getItem("token")
+        },
+        body: JSON.stringify({"bookId": bookId, "bookQuantity": quantity})})
+        .then(res => res.text())
+        .then(res => console.log(res))
     }
 
     addToWishlist(userId, bookId) {
         fetch("http://127.0.0.1:8080/home/user/wishlist/add", {
-            method: 'PUT',
-            headers: {
-                "content-type": "Application/json"
-            },
-            body: JSON.stringify({ "bookId": bookId, "userId": userId })
-        })
-            .then(res => res.text())
-            .then(res => console.log(res))
+        method: 'PUT',
+        headers: {
+            "content-type": "Application/json",
+            "token": localStorage.getItem("token")
+        },
+        body: JSON.stringify({"bookId": bookId, "userId": userId})})
+        .then(res => res.text())
+        .then(res => console.log(res))
     }
 
     getAllBookAsc(callback) {
@@ -54,39 +64,77 @@ export default class BookData {
             .then(values => callback(values))
     }
 
-    updateCart(userId, bookId, quantity) {
+    updateCart(bookId, quantity) {
         fetch("http://127.0.0.1:8080/home/user/cart/add-update", {
-            method: 'PUT',
-            headers: {
-                "content-type": "Application/json"
-            },
-            body: JSON.stringify({ "bookId": bookId, "bookQuantity": quantity, "userId": userId })
-        })
-            .then(res => res.text())
-            .then(res => console.log(res))
+        method: 'PUT',
+        headers: {
+            "content-type": "Application/json",
+            "token": localStorage.getItem("token")
+        },
+        body: JSON.stringify({"bookId": bookId, "bookQuantity": quantity})})
+        .then(res => res.text())
+        .then(res => console.log(res))
     }
 
-    removeFromCart(userId, bookId, quantity) {
+    removeFromCart(bookId, quantity){
         fetch("http://127.0.0.1:8080/home/user/cart/remove", {
             method: 'PUT',
             headers: {
+                "content-type": "Application/json",
+                "token": localStorage.getItem("token")
+            },
+            body: JSON.stringify({"bookId": bookId, "bookQuantity": quantity})})
+            .then(res => res.text())
+            .then(res => console.log(res))
+    }    
+
+    removeFromWishList(userId, bookId){
+        fetch("http://127.0.0.1:8080/home/user/wishlist/remove", {
+        method: 'PUT',
+        headers: {
+            "content-type": "Application/json",
+            "token": localStorage.getItem("token")
+        },
+        body: JSON.stringify({"bookId": bookId, "userId": userId})})
+        .then(res => res.text())
+        .then(res => console.log(res))
+    }
+    
+    getAllSearchBook(searchText, callback) {
+        console.log("text", searchText)
+        fetch(`http://127.0.0.1:8080/verifyaccount/searchbooks/${searchText}`)
+        .then(res => res.json())
+        .then(values => callback(values))
+    }
+
+    signUpData(username, password, email, phoneNo, role){
+        fetch("http://127.0.0.1:8080/api/auth/signup", {
+            method: 'POST',
+            headers: {
                 "content-type": "Application/json"
             },
-            body: JSON.stringify({ "bookId": bookId, "bookQuantity": quantity, "userId": userId })
-        })
+            body: JSON.stringify({
+                "email": email,
+                "password": password,
+                "phoneNumber": phoneNo,
+                "role": role,
+                "username": username
+              })})
             .then(res => res.text())
             .then(res => console.log(res))
     }
 
-    removeFromWishList(userId, bookId) {
-        fetch("http://127.0.0.1:8080/home/user/wishlist/remove", {
-            method: 'PUT',
+    signInData(username, password){
+        fetch("http://127.0.0.1:8080/api/auth/signin", {
+            method: 'POST',
             headers: {
                 "content-type": "Application/json"
             },
-            body: JSON.stringify({ "bookId": bookId, "userId": userId })
-        })
-            .then(res => res.text())
-            .then(res => console.log(res))
+            body: JSON.stringify({
+                "username": username,
+                "password": password
+              })})
+            .then(res => res.json())
+            .then(res => localStorage.setItem("token", res.accessToken))
     }
 }
