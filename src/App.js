@@ -12,6 +12,7 @@ import BookData from './components/BookDataLayer';
 import SignIn from './components/signin';
 import SignUp from './components/signup';
 import ResetPassword from './components/ResetPassword';
+import NewPassword from './components/NewPassword';
 
 const initialState = {
   cartCount: 0,
@@ -24,8 +25,8 @@ function reducer(state = initialState, action) {
       return {
         cartCount: action.payload
       }
-      case "wishListUpdate":
-        console.log("wishupdate", action.payload)
+    case "wishListUpdate":
+      console.log("wishupdate", action.payload)
       return {
         wishListCount: action.payload
       }
@@ -50,16 +51,16 @@ export default class App extends Component {
   }
 
   async componentDidMount() {
-      await bookData.getAllCartBook(response => {
-        this.setState({
-          cartBookCount: response.length
-        })
-      });
-      await bookData.getAllWishlistBook(response => {
-        this.setState({
-          wishBookCount: response.length
-        })
-      });
+    await bookData.getAllCartBook(response => {
+      this.setState({
+        cartBookCount: response.length
+      })
+    });
+    await bookData.getAllWishlistBook(response => {
+      this.setState({
+        wishBookCount: response.length
+      })
+    });
   }
 
   render() {
@@ -68,7 +69,7 @@ export default class App extends Component {
         <div className="App" >
 
           <div className="App-header">
-            <Navigation cartBookCount={this.state.cartBookCount} wishBookCount={this.state.wishBookCount}/>
+            <Navigation cartBookCount={this.state.cartBookCount} wishBookCount={this.state.wishBookCount} />
           </div>
 
           <div className="PageRoute">
@@ -81,6 +82,7 @@ export default class App extends Component {
                 <Route path="/signin" component={SignIn} exact />
                 <Route path="/signup" component={SignUp} exact />
                 <Route path="/resetpassword" component={ResetPassword} exact />
+                <Route path="/newpassword" component={NewPassword} exact />
               </Switch>
             </BrowserRouter>
           </div>
@@ -88,7 +90,7 @@ export default class App extends Component {
           <footer className="footer">
             <text is="x3d">
               Copyright &#xf1f9; 2020, Bookstore Private Limited. All Rights Reserved
-        </text>
+            </text>
           </footer>
 
         </div>
