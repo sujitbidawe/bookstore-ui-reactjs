@@ -19,14 +19,13 @@
   outline-color: #F5F5F5;
   outline-width: thin;
   font-family: fontawesome;
-  /* width: 95%; */
-  /* position: relative; */
 }
 
 .App-header {
   height: 50px;
-  /* width: 88.5%; */
-  /* position: fixed; */
+  size: inherit;
+  position: sticky;
+  top: 0;
   color: white;
   background-color: rgb(129, 29, 29);
 }
@@ -65,6 +64,9 @@
   color: white;
   height: 50px;
   font-family: fontawesome;
+  position: relative;
+  bottom: 0;
+  size: inherit;
 }
 
 .wishList {
