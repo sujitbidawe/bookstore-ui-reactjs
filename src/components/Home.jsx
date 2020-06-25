@@ -79,7 +79,7 @@ class Home extends Component {
                         <div className="Book" key={book.id}>
                             <img style={{ height: '150px', width: '120px', marginTop:"5px", backgroundColor:"grey" }} src={book.picPath} alt="" />
                             <h4 style={{ height: "0px", justifySelf: "center", textAlign: "center" }}>{book.nameOfBook}</h4>
-                            <h5 style={{ height: "0px", opacity: '0.5' }}>By {book.author}</h5>
+                            <h5 style={{ height: "0px", color:"grey" }}>By {book.author}</h5>
                             <h4 style={{ height: "0px" }}>Rs. {book.price}</h4>
                             <div style={{ padding: "2px" }}>
                                 <button onClick={() => this.handleClickAddToCart(book.id)} style={{ backgroundColor: 'brown', color: 'white', width: '110px', height: '25px' }}>ADD TO CART</button>
