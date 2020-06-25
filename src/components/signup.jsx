@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import BookData from './BookDataLayer';
 
-var bookData = new BookData;
+var bookData = new BookData();
 
 export class SignUp extends Component {
     constructor(props) {
