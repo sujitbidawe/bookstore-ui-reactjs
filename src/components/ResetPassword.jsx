@@ -6,7 +6,8 @@ export class ResetPassword extends Component {
         return (
             <div className="login-box">
                 <h1>Welcome to BookStore</h1>
-                <div style={{ padding: "10px", display: "flex", flexDirection: "column" }}>
+                <div style={{ padding: "10px", display: "flex", flexDirection: "column", alignItems:"center" }}>
+                    <h4>Trouble logging in?</h4>
                     <input style={{ padding: "10px", margin: "5px", width:"200px" }} placeholder="Email"></input>
                 </div>
                 <div>
