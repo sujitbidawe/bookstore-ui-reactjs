@@ -77,7 +77,7 @@ class Home extends Component {
                 <div className="bookCompartment">
                     {this.state.bookList.map(book => (
                         <div className="Book" key={book.id}>
-                            <img style={{ height: '150px', width: '120px' }} src={book.picPath} alt="" />
+                            <img style={{ height: '150px', width: '120px', marginTop:"5px", backgroundColor:"grey" }} src={book.picPath} alt="" />
                             <h4 style={{ height: "0px", justifySelf: "center", textAlign: "center" }}>{book.nameOfBook}</h4>
                             <h5 style={{ height: "0px", opacity: '0.5' }}>By {book.author}</h5>
                             <h4 style={{ height: "0px" }}>Rs. {book.price}</h4>
