@@ -6,8 +6,8 @@ export default class BookData {
             .then(values => callback(values))
     }
 
-    getAllCartBook(callback) {
-        fetch("http://127.0.0.1:8080/home/user/cart/getall", {
+    async getAllCartBook(callback) {
+        await fetch("http://127.0.0.1:8080/home/user/cart/getall", {
             method: 'GET',
             headers: {
                 "content-type": "Application/json",
