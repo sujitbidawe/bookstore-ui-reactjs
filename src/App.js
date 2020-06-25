@@ -56,12 +56,10 @@ export default class App extends Component {
         })
       });
       await bookData.getAllWishlistBook(response => {
-        // console.log("i am response length", response.length)
         this.setState({
           wishBookCount: response.length
         })
       });
-      // console.log("i am groot", this.state.wishBookCount);
   }
 
   render() {
