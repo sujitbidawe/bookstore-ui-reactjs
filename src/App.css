@@ -64,7 +64,7 @@
   color: white;
   height: 50px;
   font-family: fontawesome;
-  position: relative;
+  /* position: sticky; */
   bottom: 0;
   size: inherit;
 }
