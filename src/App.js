@@ -82,7 +82,7 @@ export default class App extends Component {
                 <Route path="/signin" component={SignIn} exact />
                 <Route path="/signup" component={SignUp} exact />
                 <Route path="/resetpassword" component={ResetPassword} exact />
-                <Route path="/newpassword" component={NewPassword} exact />
+                <Route path="/passwordset/*" component={NewPassword}  />
               </Switch>
             </BrowserRouter>
           </div>
