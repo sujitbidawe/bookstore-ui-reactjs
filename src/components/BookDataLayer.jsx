@@ -137,4 +137,17 @@ export default class BookData {
             .then(res => res.json())
             .then(res => localStorage.setItem("token", res.accessToken))
     }
+
+    async resetPassword(email){
+        await fetch("http://127.0.0.1:8080/api/auth/forgotpassword",{
+            method: 'POST',
+            headers: {
+                "content-type": "Application/json"
+            },
+            body: JSON.stringify({
+                "email": email
+                })})
+            .then(res => res.text())
+            .then(res => console.log(res))
+    }
 }
