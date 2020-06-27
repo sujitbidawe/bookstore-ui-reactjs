@@ -22,7 +22,12 @@ class Cart extends Component {
                 bookCount: response.length
             })
         });
-        this.props.dispatch({ type: "methodCalled", payload: this.state.bookList.length })
+        await bookData.getAllCartBook(response => {
+            this.props.dispatch({ type: "methodCalled", payload: response.length })
+        })
+        await bookData.getAllWishlistBook(response => {
+            this.props.dispatch({ type: "wishListUpdate", payload: response.length })
+        })
     }
 
     async handleChangeBookRemove(e) {

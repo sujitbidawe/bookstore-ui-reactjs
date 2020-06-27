@@ -20,6 +20,12 @@ class Home extends Component {
                 bookList: response
             })
         });
+        await bookData.getAllCartBook(response => {
+            this.props.dispatch({ type: "methodCalled", payload: response.length })
+        })
+        await bookData.getAllWishlistBook(response => {
+            this.props.dispatch({ type: "wishListUpdate", payload: response.length })
+        })
     }
 
     handleClickAddToCart = async (e) => {

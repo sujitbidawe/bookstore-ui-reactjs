@@ -20,7 +20,12 @@ class WishList extends Component {
                 bookList: response
             })
         });
-        this.props.dispatch({ type: "wishListUpdate", payload: this.state.bookList.length });
+        await bookData.getAllCartBook(response => {
+            this.props.dispatch({ type: "methodCalled", payload: response.length })
+        })
+        await bookData.getAllWishlistBook(response => {
+            this.props.dispatch({ type: "wishListUpdate", payload: response.length })
+        })
     }
 
     handleClickAddToCart = async (e) => {
