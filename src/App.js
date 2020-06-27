@@ -21,7 +21,7 @@ const initialState = {
 
 function reducer(state = initialState, action) {
   switch (action.type) {
-    case "methodCalled":
+    case "cartUpdate":
       return {
         cartCount: action.payload,
         wishListCount: state.wishListCount

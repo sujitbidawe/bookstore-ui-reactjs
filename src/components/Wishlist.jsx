@@ -21,7 +21,7 @@ class WishList extends Component {
             })
         });
         await bookData.getAllCartBook(response => {
-            this.props.dispatch({ type: "methodCalled", payload: response.length })
+            this.props.dispatch({ type: "cartUpdate", payload: response.length })
         })
         await bookData.getAllWishlistBook(response => {
             this.props.dispatch({ type: "wishListUpdate", payload: response.length })
@@ -42,7 +42,7 @@ class WishList extends Component {
                 cartBookCount: response.length
             })
         })
-        this.props.dispatch({ type: "methodCalled", payload: this.state.cartBookCount });
+        this.props.dispatch({ type: "cartUpdate", payload: this.state.cartBookCount });
     }
 
     handleRemoveFromWishList = async (e) => {

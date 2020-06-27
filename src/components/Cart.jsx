@@ -23,7 +23,7 @@ class Cart extends Component {
             })
         });
         await bookData.getAllCartBook(response => {
-            this.props.dispatch({ type: "methodCalled", payload: response.length })
+            this.props.dispatch({ type: "cartUpdate", payload: response.length })
         })
         await bookData.getAllWishlistBook(response => {
             this.props.dispatch({ type: "wishListUpdate", payload: response.length })
@@ -38,7 +38,7 @@ class Cart extends Component {
             })
         });
         // console.log("remove book", this.state.bookList.length)
-        this.props.dispatch({ type: "methodCalled", payload: this.state.bookList.length })
+        this.props.dispatch({ type: "cartUpdate", payload: this.state.bookList.length })
     }
 
     async handleChangeBookDec(e) {
@@ -50,7 +50,7 @@ class Cart extends Component {
                 bookList: response
             })
         })
-        this.props.dispatch({ type: "methodCalled", payload: this.state.bookList.length })
+        this.props.dispatch({ type: "cartUpdate", payload: this.state.bookList.length })
     }
 
     async handleChangeBookInc(e) {
@@ -61,7 +61,7 @@ class Cart extends Component {
                 bookList: response
             })
         })
-        this.props.dispatch({ type: "methodCalled", payload: this.state.bookList.length })
+        this.props.dispatch({ type: "cartUpdate", payload: this.state.bookList.length })
     }
 
     toggleDetailsView = async () => {
@@ -73,7 +73,7 @@ class Cart extends Component {
     }
 
     render() {
-        this.props.dispatch({ type: "methodCalled", payload: this.state.bookList.length });
+        this.props.dispatch({ type: "cartUpdate", payload: this.state.bookList.length });
         return (
             <div className="cart">
                 <br />
