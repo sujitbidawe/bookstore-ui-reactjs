@@ -13,7 +13,6 @@ import SignIn from './components/signin';
 import SignUp from './components/signup';
 import ResetPassword from './components/ResetPassword';
 import NewPassword from './components/NewPassword';
-import SearchResult from './components/SearchResult';
 
 const initialState = {
   cartCount: 0,
@@ -94,7 +93,6 @@ export default class App extends Component {
                 <Route path="/signup" component={SignUp} exact />
                 <Route path="/resetpassword" component={ResetPassword} exact />
                 <Route path="/passwordset/*" component={NewPassword}  />
-                <Route path="/search-result" component={SearchResult} />
               </Switch>
             </BrowserRouter>
           </div>
