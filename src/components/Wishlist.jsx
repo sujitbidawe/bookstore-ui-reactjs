@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import BookData from './BookDataLayer';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 var bookData = new BookData();
 
@@ -58,6 +59,7 @@ class WishList extends Component {
     render() {
         this.props.dispatch({ type: "wishListUpdate", payload: this.state.bookList.length });
         return (
+            localStorage.getItem("token") != null ?
             <div className="wishList">
                 <h1 style={{ color: "brown" }}>
                     WishList({this.state.bookList.length})
@@ -78,6 +80,7 @@ class WishList extends Component {
                     </div>
                 ))}
             </div>
+            :  <Redirect to='/signin' />
         );
     }
 }

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import BookData from './BookDataLayer';
 import CustomerDetails from './Customerdetails';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 var bookData = new BookData();
 
@@ -75,6 +76,7 @@ class Cart extends Component {
     render() {
         this.props.dispatch({ type: "cartUpdate", payload: this.state.bookList.length });
         return (
+            localStorage.getItem("token") != null ?
             <div className="cart">
                 <br />
                 <div style={{ border: "1px groove grey", marginBottom: "20px" }}>
@@ -108,6 +110,7 @@ class Cart extends Component {
                     <CustomerDetails toggleDetailsView={this.toggleDetailsView} />
                 </div>
             </div>
+            :  <Redirect to='/signin' />
         );
     }
 }

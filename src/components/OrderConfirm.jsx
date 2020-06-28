@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import Order from '../Assets/Order.jpg'
+import Order from '../Assets/Order.jpg';
+import { Redirect } from 'react-router-dom';
 
 export default class OrderConfirm extends Component {
 
@@ -9,6 +10,7 @@ export default class OrderConfirm extends Component {
 
     render() {
         return (
+            localStorage.getItem("token") != null ?
             <div className="OrderConfirm">
                 <div className="orderPlaced">
                     <img src={Order} alt=""></img>
@@ -33,6 +35,7 @@ export default class OrderConfirm extends Component {
                     <button onClick={this.goToHomepage}>CONTINUE SHOPPING </button>
                 </div>
             </div>
+            :  <Redirect to='/signin' />
         )
     }
 }
