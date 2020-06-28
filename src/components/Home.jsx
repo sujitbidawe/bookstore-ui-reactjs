@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import BookData from './BookDataLayer';
 import { connect } from 'react-redux';
+import Pagination from '../components/Pagination';
 
 var bookData = new BookData();
 
@@ -10,8 +11,10 @@ class Home extends Component {
         this.state = {
             bookList: [],
             cartCount: 0,
-            wishCount: 0
+            wishCount: 0,
+            pageOfItems: []
         }
+        this.onChangePage = this.onChangePage.bind(this);
     }
 
     async componentDidMount() {
@@ -74,6 +77,11 @@ class Home extends Component {
         });
     }
 
+    onChangePage(pageOfItems) {
+        // update state with new page of items
+        this.setState({ pageOfItems: pageOfItems });
+    }
+
     render() {
         if (this.props.searchText !== undefined) {
             this.handleSearchtext()
@@ -92,7 +100,7 @@ class Home extends Component {
                     </select>
                 </div>
                 <div className="bookCompartment">
-                    {this.state.bookList.map(book => (
+                    {this.state.pageOfItems.map(book => (
                         <div className="Book" key={book.id}>
                             <img style={{ height: '150px', width: '120px', marginTop: "5px", backgroundColor: "grey" }} src={book.picPath} alt="" />
                             <h4 style={{ height: "0px", justifySelf: "center", textAlign: "center" }}>{book.nameOfBook}</h4>
@@ -104,6 +112,9 @@ class Home extends Component {
                             </div>
                         </div>
                     ))}
+                </div>
+                <div>
+                    <Pagination items={this.state.bookList} onChangePage={this.onChangePage} />
                 </div>
             </div>
         );

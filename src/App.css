@@ -217,3 +217,22 @@
   background-color: rgb(129, 5, 5);
   border: 1px groove rgb(53, 47, 47);
 }
+
+.pagination {
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.page-button-view {
+  color:brown;
+  background-color: #F8F8F8;
+  margin: 20px;
+}
+
+.page-button-view1 {
+  color:brown;
+  background-color: #F8F8F8;
+  margin: 20px;
+}
