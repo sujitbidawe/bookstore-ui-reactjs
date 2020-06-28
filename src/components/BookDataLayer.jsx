@@ -144,9 +144,9 @@ export default class BookData {
             headers: {
                 "content-type": "Application/json"
             },
-            body: JSON.stringify({
-                "email": email
-                })})
+            body: (
+                email )}
+)
             .then(res => res.text())
             .then(res => console.log(res))
     }
