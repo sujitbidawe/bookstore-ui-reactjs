@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import { Badge } from '@material-ui/core';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 class Navigation extends Component {
+    constructor() {
+        super()
+        this.state = {
+            searchText: ''
+        }
+    }
+
     handleSearchText = async (e) => {
         await this.setState({
             searchText: e.target.value
@@ -22,7 +28,7 @@ class Navigation extends Component {
                 <a href="/" style={{ color: "white", fontSize: "25px", textDecoration: 'none' }}> &#xf02d; BookStore</a>
                 <div>
                     <input style={{ fontFamily: "fontawesome", width: "450px", height: "25px", fontSize: "15px" }} onChange={(e) => this.handleSearchText(e)} placeholder="&#xf002;  Search..."></input>
-                    <button onClick={() => this.handleSearch()} style={{ fontFamily: "fontawesome", width: '31px', height: '31px' }}>&#xf002;</button>
+                    <button onClick={this.handleSearch} style={{ fontFamily: "fontawesome", width: '31px', height: '31px' }}>&#xf002;</button>
                 </div>
                 <div>
                     <a href="/signin" style={{ color: "white", textDecoration: 'none', padding: "8px", border: "1px groove white" }}>Signin </a>
