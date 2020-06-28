@@ -44,7 +44,7 @@ class Cart extends Component {
     async handleChangeBookDec(e) {
         let q = e.bookQuantity - 1;
         // console.log("bookLength from cart",this.state.bookList.length)
-        await bookData.updateCart(101, e.id, q)
+        await bookData.updateCart(e.id, q)
         await bookData.getAllCartBook(response => {
             this.setState({
                 bookList: response
@@ -55,7 +55,7 @@ class Cart extends Component {
 
     async handleChangeBookInc(e) {
         let q = e.bookQuantity + 1;
-        await bookData.updateCart(101, e.id, q)
+        await bookData.updateCart(e.id, q)
         await bookData.getAllCartBook(response => {
             this.setState({
                 bookList: response
