@@ -66,7 +66,18 @@ class Home extends Component {
         }
     }
 
+    handleSearchtext = async () => {
+        await bookData.getAllSearchBook(this.props.searchText, response => {
+            this.setState({
+                bookList: response
+            })
+        });
+    }
+
     render() {
+        if (this.props.searchText !== undefined) {
+            this.handleSearchtext()
+        }
         return (
             <div >
                 <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", paddingLeft: "100px", paddingRight: "100px", paddingTop: "20px" }}>
@@ -83,9 +94,9 @@ class Home extends Component {
                 <div className="bookCompartment">
                     {this.state.bookList.map(book => (
                         <div className="Book" key={book.id}>
-                            <img style={{ height: '150px', width: '120px', marginTop:"5px", backgroundColor:"grey" }} src={book.picPath} alt="" />
+                            <img style={{ height: '150px', width: '120px', marginTop: "5px", backgroundColor: "grey" }} src={book.picPath} alt="" />
                             <h4 style={{ height: "0px", justifySelf: "center", textAlign: "center" }}>{book.nameOfBook}</h4>
-                            <h5 style={{ height: "0px", color:"grey" }}>By {book.author}</h5>
+                            <h5 style={{ height: "0px", color: "grey" }}>By {book.author}</h5>
                             <h4 style={{ height: "0px" }}>Rs. {book.price}</h4>
                             <div style={{ padding: "2px" }}>
                                 <button onClick={() => this.handleClickAddToCart(book.id)} style={{ backgroundColor: 'brown', color: 'white', width: '110px', height: '25px' }}>ADD TO CART</button>
@@ -101,7 +112,8 @@ class Home extends Component {
 
 const mapStateToProps = (state) => ({
     cartCount: state.cartCount,
-    wishListCount: state.wishListCount
+    wishListCount: state.wishListCount,
+    searchText: state.searchText
 });
 
 export default connect(mapStateToProps)(Home);
