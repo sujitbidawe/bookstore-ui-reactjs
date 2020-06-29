@@ -28,6 +28,7 @@ export class SignIn extends Component {
     handleChangeLogin = async () => {
         await bookData.signInData(this.state.username, this.state.password)
         console.log("token:", localStorage.getItem("token"));
+        window.location.reload(true);
     }
 
     render() {

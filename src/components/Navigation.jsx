@@ -22,6 +22,10 @@ class Navigation extends Component {
         this.props.dispatch({ type: "searchUpdate", payload: this.state.searchText })
     }
 
+    handleSignOut = () => {
+        localStorage.removeItem("token");
+    }
+
     render() {
         return (
             <li className="NavButtons" style={{ fontSize: "15px" }}>
@@ -31,7 +35,9 @@ class Navigation extends Component {
                     <button onClick={this.handleSearch} style={{ fontFamily: "fontawesome", width: '31px', height: '31px' }}>&#xf002;</button>
                 </div>
                 <div>
+                    {localStorage.getItem("token") === null ? 
                     <a href="/signin" style={{ color: "white", textDecoration: 'none', padding: "8px", border: "1px groove white" }}>Signin </a>
+                    : <a href="/" style={{ color: "white", textDecoration: 'none', padding: "8px", border: "1px groove white" }} onClick={this.handleSignOut}>SignOut </a> }
                     <a className="cartIcon" href="/Cart" ><Badge color="primary" badgeContent={this.props.cartBookCount === this.props.cartCount ? this.props.cartBookCount : this.props.cartCount} showZero></Badge>&#xf07a;  Cart</a>
                     <a href="/wishlist" style={{ color: "white", textDecoration: 'none' }}><Badge color="primary" badgeContent={this.props.wishBookCount === this.props.wishListCount ? this.props.wishBookCount : this.props.wishListCount} showZero></Badge>   &#xf08A;  WishList</a>
                 </div>
