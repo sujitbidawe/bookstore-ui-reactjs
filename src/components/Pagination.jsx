@@ -89,7 +89,7 @@ class Pagination extends Component {
         }
 
         return (
-            <div style={{ marginLeft: '96px' }}>
+            <div>
                 <div className="pagination">
                     <button className="page-button-view1" onClick={() => this.setPage(1)}>First</button>
                     <button className="page-button-view1" onClick={() => this.setPage(pager.currentPage - 1)} >Previous</button>
