@@ -110,6 +110,9 @@ class Home extends Component {
                                 <button onClick={() => this.handleClickAddToCart(book.id)} style={{ backgroundColor: 'brown', color: 'white', width: '110px', height: '25px' }}>ADD TO CART</button>
                                 <button onClick={() => this.handleClickAddToWishlist(book.id)} style={{ fontFamily: "fontawesome", width: '100px', height: '25px', marginLeft: '3.5px' }}>&#xf08A; WISHLIST</button>
                             </div>
+                            <div className="bookInfo">
+                                <p style={{padding: '13px'}}>{book.description}</p>
+                            </div>
                         </div>
                     ))}
                 </div>

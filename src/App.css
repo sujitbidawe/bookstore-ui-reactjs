@@ -122,8 +122,9 @@
   display: flex;
   flex-direction: column;
   /* border: 1px groove grey; */
-  width: 100%;
-  /* padding: 20px; */
+  /* width: 100%; */
+  padding-left: 50px;
+  padding-right: 50px;
   margin-bottom: 20px;
 }
 
@@ -138,10 +139,12 @@
   display: flex;
   flex-direction: row;
   border: 1px groove grey;
-  padding: 20px;
+  /* padding: 20px; */
   margin-bottom: 20px;
+  margin-left: 50px;
+  margin-right: 50px;
   justify-content: space-between;
-  width: 100%;
+  /* width: 100%; */
 }
 
 .orderList {
@@ -235,4 +238,22 @@
   color:brown;
   background-color: #F8F8F8;
   margin: 20px;
+}
+
+.Book:hover .bookInfo{
+  width: 500px;
+  display: block;
+  position: absolute;
+  min-height: 90px;
+  width: 300px;
+  margin-left: 200px;
+  background-color: white;
+  outline-style: groove;
+  outline-width: 0.1px;
+  outline-color: grey;
+}
+
+.bookInfo {
+  position: absolute;
+  display: none;
 }
