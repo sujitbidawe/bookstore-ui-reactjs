@@ -11,7 +11,7 @@ class Cart extends Component {
         super()
         this.state = {
             bookList: [],
-            toggle: false,
+            customerDetailsToggle: false,
             summaryToggle: false,
             name: '',
             pincode: '',
@@ -84,18 +84,18 @@ class Cart extends Component {
         await bookData.isCustomerDetailsExisted(response => {
             if (response === 'true') {
                 this.setState({
-                    toggle: this.state.toggle,
+                    customerDetailsToggle: this.state.customerDetailsToggle,
                     summaryToggle: !this.state.summaryToggle
                 })
-                console.log("qweqwe", this.state.summaryToggle, this.state.toggle)
+                console.log("qweqwe", this.state.summaryToggle, this.state.customerDetailsToggle)
             } if (response === 'false') {
                 this.setState({
-                    toggle: !this.state.toggle,
+                    customerDetailsToggle: !this.state.customerDetailsToggle,
                     summaryToggle: this.state.summaryToggle
                 })
             }
         })
-        console.log("qweqwe", this.state.summaryToggle, this.state.toggle)
+        console.log("qweqwe", this.state.summaryToggle, this.state.customerDetailsToggle)
     }
 
     handleSetName = (e) => {
@@ -229,7 +229,7 @@ class Cart extends Component {
                     </div>
                 </div>
                 <div className="customerDetails">
-                    {this.state.toggle ?
+                    {this.state.customerDetailsToggle ?
                         <div style={{ border: "1px groove grey", marginBottom: "20px", padding: "20px",  }}>
                             <form>
                                 <div>
