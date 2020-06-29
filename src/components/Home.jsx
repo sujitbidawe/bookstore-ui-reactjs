@@ -75,6 +75,7 @@ class Home extends Component {
                 bookList: response
             })
         });
+        await this.props.dispatch({ type: "searchUpdate", payload: '' })
     }
 
     onChangePage(pageOfItems) {
@@ -83,7 +84,7 @@ class Home extends Component {
     }
 
     render() {
-        if (this.props.searchText !== undefined) {
+        if (this.props.searchText !== undefined && this.props.searchText !== '') {
             this.handleSearchtext()
         }
         return (
