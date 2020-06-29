@@ -8,7 +8,8 @@ export default class OrderSummary extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            summaryBookList: []
+            summaryBookList: [],
+            orderId: ''
         }
     }
 
@@ -18,6 +19,13 @@ export default class OrderSummary extends Component {
                 summaryBookList: response
             })
         });
+    }
+
+    async handleChangePlaceOrder() {
+        await bookData.placeOrder(response => {
+            console.log("order id : ", response)
+            window.location.reload(true);
+        })
     }
 
     render() {
@@ -40,7 +48,7 @@ export default class OrderSummary extends Component {
 
                 <div style={{ display: "flex", alignItems: "flex-end" }}>
                     <Link to="/Order" style={{ textDecoration: "none" }}>
-                        <button className="checkoutButton">CHECKOUT </button>
+                        <button className="checkoutButton" onClick={this.handleChangePlaceOrder}>CHECKOUT </button>
                     </Link>
                 </div>
             </div>
