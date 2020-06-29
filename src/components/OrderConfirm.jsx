@@ -13,8 +13,8 @@ export default class OrderConfirm extends Component {
         }
     }
 
-    async componentDidMount() {
-        await bookData.getOrderId(response => {
+    componentDidMount() {
+        bookData.getOrderId(response => {
             console.log("id: ", response)
             this.setState({
                 orderId: response
