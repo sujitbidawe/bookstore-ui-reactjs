@@ -28,7 +28,19 @@ export class SignIn extends Component {
     handleChangeLogin = async () => {
         await bookData.signInData(this.state.username, this.state.password)
         console.log("token:", localStorage.getItem("token"));
-        window.location.reload(true);
+        // await window.location.reload(true);
+        if (localStorage.getItem("isFrom") === "cart") {
+            await localStorage.setItem("isFrom", "nowhere")
+            this.props.history.push('/cart');
+        }
+        if (localStorage.getItem("isFrom") === "wishList") {
+            await localStorage.setItem("isFrom", "nowhere")
+            this.props.history.push('/wishlist');
+        }
+        else{
+            this.props.history.push('/');
+        }
+        
     }
 
     render() {
@@ -40,9 +52,7 @@ export class SignIn extends Component {
                     <input style={{ padding: "10px", margin: "5px" }} placeholder="Password" onChange={(e) => this.handleChangePassword(e)}></input>
                 </div>
                 <div>
-                    <Link to="/" >
-                        <button className="button" onClick={this.handleChangeLogin}>Login</button>
-                    </Link>
+                    <button className="button" onClick={this.handleChangeLogin}>Login</button>
                 </div>
                 <div style={{ padding: "10px", margin:"5px", display: "flex", flexDirection: "column", fontSize:"20px", justifyContent:"center", alignItems:"center" }}>
                      <a style={{color:"white", textDecoration:"none",  padding: "5px"}} href="/signup">Create account instead!</a>

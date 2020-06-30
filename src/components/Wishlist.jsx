@@ -80,7 +80,7 @@ class WishList extends Component {
                     </div>
                 ))}
             </div>
-            :  <Redirect to='/signin' />
+            :  <Redirect to='/signin' onClick={localStorage.setItem("isFrom", "wishList")}/>
         );
     }
 }
