@@ -33,7 +33,7 @@ export class SignIn extends Component {
             await localStorage.setItem("isFrom", "nowhere")
             this.props.history.push('/cart');
         }
-        if (localStorage.getItem("isFrom") === "wishList") {
+        else if (localStorage.getItem("isFrom") === "wishList") {
             await localStorage.setItem("isFrom", "nowhere")
             this.props.history.push('/wishlist');
         }
