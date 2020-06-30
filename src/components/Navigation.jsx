@@ -35,8 +35,8 @@ class Navigation extends Component {
                     <button onClick={this.handleSearch} style={{ fontFamily: "fontawesome", width: '31px', height: '31px' }}>&#xf002;</button>
                 </div>
                 <div>
-                    <a className="cartIcon" href="/Cart" ><Badge color="primary" badgeContent={this.props.cartBookCount === this.props.cartCount ? this.props.cartBookCount : this.props.cartCount} showZero></Badge>&#xf07a;  Cart</a>
-                    <a href="/wishlist" style={{ color: "white", marginRight:"10px", textDecoration: 'none' }}><Badge color="primary" badgeContent={this.props.wishBookCount === this.props.wishListCount ? this.props.wishBookCount : this.props.wishListCount} showZero></Badge>   &#xf08A;  WishList</a>
+                    <a className="cartIcon" href="/Cart" ><Badge color="primary" badgeContent={this.props.cartBookCount === this.props.cartCount ? this.props.cartBookCount : this.props.cartCount} ></Badge>&#xf07a;  Cart</a>
+                    <a href="/wishlist" style={{ color: "white", marginRight:"10px", textDecoration: 'none' }}><Badge color="primary" badgeContent={this.props.wishBookCount === this.props.wishListCount ? this.props.wishBookCount : this.props.wishListCount} ></Badge>   &#xf08A;  WishList</a>
                     {localStorage.getItem("token") === null ? 
                     <a href="/signin" style={{ color: "white", textDecoration: 'none', padding: "8px", border: "1px groove white" }}>Signin </a>
                     : <a href="/" style={{ color: "white", textDecoration: 'none', padding: "8px", border: "1px groove white" }} onClick={this.handleSignOut}>SignOut </a> }
