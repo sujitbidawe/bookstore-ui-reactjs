@@ -28,17 +28,20 @@ export class SignIn extends Component {
     handleChangeLogin = async () => {
         await bookData.signInData(this.state.username, this.state.password)
         console.log("token:", localStorage.getItem("token"));
-        // await window.location.reload(true);
+        
         if (localStorage.getItem("isFrom") === "cart") {
             await localStorage.setItem("isFrom", "nowhere")
             this.props.history.push('/cart');
+            window.location.reload(true);
         }
         else if (localStorage.getItem("isFrom") === "wishList") {
             await localStorage.setItem("isFrom", "nowhere")
             this.props.history.push('/wishlist');
+            window.location.reload(true);
         }
         else{
             this.props.history.push('/');
+            window.location.reload(true);
         }
         
     }
