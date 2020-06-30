@@ -43,7 +43,7 @@ class Cart extends Component {
         })
         await bookData.getAllCartBook(response => {
             this.setState({
-                summaryBookList: response
+                bookList: response
             })
         });
     }
@@ -268,7 +268,7 @@ class Cart extends Component {
                 <div className="OrderSummary">
                 <div>
                     <h3 style={{padding:"20px"}}>Order Summary</h3>
-                    {this.state.summaryBookList.map(book => (
+                    {this.state.bookList.map(book => (
                         <div className="orderList" key={book.id}>
                             <div>
                                 <img style={{ height: '150px', width: '120px' }} src={book.picPath} alt="" />
