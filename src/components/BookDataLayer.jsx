@@ -1,7 +1,7 @@
 export default class BookData {
 
-    async getAllBooks(callback) {
-        await fetch('http://127.0.0.1:8080/verifyaccount/all')
+    async getAllBook(pageNumber, callback) {
+        await fetch(`http://127.0.0.1:8080/verifyaccount/all?page=${pageNumber}&size=8`)
             .then(res => res.json())
             .then(values => callback(values))
     }
@@ -55,14 +55,14 @@ export default class BookData {
             .then(res => console.log(res))
     }
 
-    async getAllBookAsc(callback) {
-        await fetch('http://127.0.0.1:8080/verifyaccount/sort-asc/price')
+    async getAllBookAsc(pageNumber, callback) {
+        await fetch(`http://127.0.0.1:8080/verifyaccount/sort-asc/price?page=${pageNumber}&size=8`)
             .then(res => res.json())
             .then(values => callback(values))
     }
 
-    async getAllBookDesc(callback) {
-        await fetch('http://127.0.0.1:8080/verifyaccount/sort-desc/price')
+    async getAllBookDesc(pageNumber, callback) {
+        await fetch(`http://127.0.0.1:8080/verifyaccount/sort-desc/price?page=${pageNumber}&size=8`)
             .then(res => res.json())
             .then(values => callback(values))
     }
@@ -106,9 +106,9 @@ export default class BookData {
             .then(res => console.log(res))
     }
 
-    async getAllSearchBook(searchText, callback) {
+    async getAllSearchBook(searchText, pageNumber, callback) {
         console.log("text", searchText)
-        await fetch(`http://127.0.0.1:8080/verifyaccount/searchbooks/${searchText}`)
+        await fetch(`http://127.0.0.1:8080/verifyaccount/searchbooks/${searchText}?page=${pageNumber}&size=8`)
             .then(res => res.json())
             .then(values => callback(values))
     }
@@ -161,7 +161,7 @@ export default class BookData {
     }
 
     async setNewPassword(password) {
-        await fetch("http://localhost:8080/api/auth/resetpassword", {
+        await fetch("http://127.0.0.1:8080/api/auth/resetpassword", {
             method: 'PUT',
             headers: {
                 "token": localStorage.getItem("token")
@@ -174,7 +174,7 @@ export default class BookData {
     }
 
     addCustomerDetails(name, pincode, locality, address, city, landmark, addressType) {
-        fetch("http://localhost:8080/home/customer/adddetails", {
+        fetch("http://127.0.0.1:8080/home/customer/adddetails", {
             method: 'POST',
             headers: {
                 "content-type": "Application/json",
@@ -195,7 +195,7 @@ export default class BookData {
     }
 
     isCustomerDetailsExisted(callback) {
-        fetch("http://localhost:8080/home/customer/isexisted", {
+        fetch("http://127.0.0.1:8080/home/customer/isexisted", {
             method: 'GET',
             headers: {
                 "token": localStorage.getItem("token")
@@ -207,7 +207,7 @@ export default class BookData {
     }
 
     placeOrder(callback) {
-        fetch('http://localhost:8080/home/user/cart/orderplaced/orderid', {
+        fetch('http://127.0.0.1:8080/home/user/cart/orderplaced/orderid', {
             method: 'GET',
             headers: {
                 "token": localStorage.getItem("token")
@@ -218,7 +218,7 @@ export default class BookData {
     }
 
     getOrderId(callback) {
-        fetch('http://localhost:8080/home/user/cart/getorderid', {
+        fetch('http://127.0.0.1:8080/home/user/cart/getorderid', {
             method: 'GET',
             headers: {
                 "token": localStorage.getItem("token")
