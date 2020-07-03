@@ -9,11 +9,11 @@ class Home extends Component {
         super()
         this.state = {
             bookList: [],
-            cartCount: 0,
-            wishCount: 0,
-            pageOfItems: []
+            totalPages: '',
+            whichData: 'allBooksData',
+            pageNumber: 0,
+            searchTextHome: ''
         }
-        this.onChangePage = this.onChangePage.bind(this);
     }
 
     async componentDidMount() {
@@ -47,13 +47,13 @@ class Home extends Component {
     }
 
     handleSort = async (e) => {
-        if (e.target.value === "Price : High to Low") {
+        if (e.target.value === "price: high to low") {
             await this.setState({
                 whichData: e.target.value,
                 pageNumber: 0
             })
         }
-        else if (e.target.value === "Price : Low to High") {
+        else if (e.target.value === "price: low to high") {
             await this.setState({
                 whichData: e.target.value,
                 pageNumber: 0
@@ -74,9 +74,8 @@ class Home extends Component {
                 pageNumber: e.target.value
             })
         }
-
-        if (this.state.whichData === "Price : High to Low") {
-            await bookData.fetchAllBookDesc(this.state.pageNumber, response => {
+        if (this.state.whichData === "price: high to low") {
+            await bookData.getAllBookDesc(this.state.pageNumber, response => {
                 this.setState({
                     bookList: response.content,
                     totalPages: response.totalPages,
@@ -84,8 +83,8 @@ class Home extends Component {
                 })
             })
         }
-        else if (this.state.whichData === "Price : Low to High") {
-            await bookData.fetchAllBookAsc(this.state.pageNumber, response => {
+        else if (this.state.whichData === "price: low to high") {
+            await bookData.getAllBookAsc(this.state.pageNumber, response => {
                 this.setState({
                     bookList: response.content,
                     totalPages: response.totalPages,
@@ -94,7 +93,7 @@ class Home extends Component {
             })
         }
         else if (this.state.whichData === "allBooksData") {
-            await bookData.fetchAllBook(this.state.pageNumber, response => {
+            await bookData.getAllBook(this.state.pageNumber, response => {
                 this.setState({
                     bookList: response.content,
                     totalPages: response.totalPages,
@@ -103,7 +102,7 @@ class Home extends Component {
             })
         }
         else if (this.state.whichData === "searchData") {
-            await bookData.fetchAllSearchBook(this.state.searchTextHome, this.state.pageNumber, response => {
+            await bookData.getAllSearchBook(this.state.searchTextHome, this.state.pageNumber, response => {
                 this.props.dispatch({ type: "searchUpdate", payload: '' })
                 this.setState({
                     bookList: response.content,
@@ -121,11 +120,6 @@ class Home extends Component {
             pageNumber: 0
         })
         await this.handleChangePage(this.state.pageNumber)
-    }
-
-    onChangePage(pageOfItems) {
-        // update state with new page of items
-        this.setState({ pageOfItems: pageOfItems });
     }
 
     render() {
