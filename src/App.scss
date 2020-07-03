@@ -1,3 +1,9 @@
+//variables
+$primary-color: rgb(129, 29, 29);
+$secondary-color: rgb(255, 255, 255);
+$tertiary-color: rgb(180, 178, 178);
+$quaternary-color: rgb(114, 134, 189);
+
 @media screen and (max-width: 1080px) {
   .NavButtons {
     overflow: visible;
@@ -16,7 +22,7 @@
   margin-left: 85px;
   margin-right: 85px;
   outline-style: groove;
-  outline-color: #F5F5F5;
+  outline-color: $secondary-color;
   outline-width: thin;
   font-family: fontawesome;
 }
@@ -26,8 +32,8 @@
   size: inherit;
   position: sticky;
   top: 0;
-  color: white;
-  background-color: rgb(129, 29, 29);
+  color: $secondary-color;
+  background-color: $primary-color;
 }
 
 .NavButtons {
@@ -49,7 +55,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid rgb(202, 198, 198);
+  border: 1px solid $tertiary-color;
   padding-right: 5px; 
   padding-left: 5px;
   margin: 15px;
@@ -60,8 +66,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(75, 30, 20);
-  color: white;
+  background-color: $primary-color;
+  color: $secondary-color;
   height: 50px;
   font-family: fontawesome;
   /* position: sticky; */
@@ -83,7 +89,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  border-bottom: 1px solid rgb(202, 198, 198);
+  border-bottom: 1px solid $tertiary-color;
   padding-right: 5px; 
   padding-left: 5px;
   margin: 15px;
@@ -138,7 +144,7 @@
 .OrderSummary {
   display: flex;
   flex-direction: row;
-  border: 1px groove grey;
+  border: 1px groove $tertiary-color;
   /* padding: 20px; */
   margin-bottom: 20px;
   margin-left: 50px;
@@ -179,7 +185,7 @@
 }
 
 .cartIcon {
-  color: white;
+  color: $secondary-color;
   text-decoration: none;
   font-family: fontawesome;
   margin: 20px
@@ -194,13 +200,13 @@
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  background-color: rgb(114, 134, 189);
-  color: white;  
+  background-color: $quaternary-color;
+  color: $secondary-color;  
 }
 
 /* Login & SignIn button */
 .button {
-  background-color:white;
+  background-color: $secondary-color;
   color:black;
   justify-content: center;
   align-items: flex-start;
@@ -216,9 +222,9 @@
   margin-right: 420px;
   margin-top: 30px;
   margin-bottom: 30px;
-  color: white;
-  background-color: rgb(129, 5, 5);
-  border: 1px groove rgb(53, 47, 47);
+  color: $secondary-color;
+  background-color: $primary-color;
+  border: 1px groove $primary-color;
 }
 
 .pagination {
@@ -229,14 +235,14 @@
 }
 
 .page-button-view {
-  color:brown;
-  background-color: #F8F8F8;
+  color:$primary-color;
+  background-color: $secondary-color;
   margin: 20px;
 }
 
 .page-button-view1 {
-  color:brown;
-  background-color: #F8F8F8;
+  color:$primary-color;
+  background-color: $secondary-color;
   margin: 20px;
 }
 
@@ -247,10 +253,10 @@
   min-height: 90px;
   width: 300px;
   margin-left: 200px;
-  background-color: white;
+  background-color: $secondary-color;
   outline-style: groove;
   outline-width: 0.1px;
-  outline-color: grey;
+  outline-color: $tertiary-color;
 }
 
 .bookInfo {
