@@ -173,8 +173,8 @@ export default class BookData {
                 ))
     }
 
-    addCustomerDetails(name, pincode, locality, address, city, landmark, addressType) {
-        fetch("http://127.0.0.1:8080/home/customer/adddetails", {
+    async addCustomerDetails(name, pincode, locality, address, city, landmark, addressType) {
+        await fetch("http://127.0.0.1:8080/home/customer/adddetails", {
             method: 'POST',
             headers: {
                 "content-type": "Application/json",
@@ -194,8 +194,8 @@ export default class BookData {
             .then(res => console.log(res))
     }
 
-    isCustomerDetailsExisted(callback) {
-        fetch("http://127.0.0.1:8080/home/customer/isexisted", {
+    async isCustomerDetailsExisted(callback) {
+        await fetch("http://127.0.0.1:8080/home/customer/isexisted", {
             method: 'GET',
             headers: {
                 "token": localStorage.getItem("token")
@@ -206,8 +206,8 @@ export default class BookData {
         )
     }
 
-    placeOrder(callback) {
-        fetch('http://127.0.0.1:8080/home/user/cart/orderplaced/orderid', {
+    async placeOrder(callback) {
+        await fetch('http://127.0.0.1:8080/home/user/cart/orderplaced/orderid', {
             method: 'GET',
             headers: {
                 "token": localStorage.getItem("token")
@@ -217,8 +217,8 @@ export default class BookData {
             .then(values => callback(values))
     }
 
-    getOrderId(callback) {
-        fetch('http://127.0.0.1:8080/home/user/cart/getorderid', {
+    async getOrderId(callback) {
+        await fetch('http://127.0.0.1:8080/home/user/cart/getorderid', {
             method: 'GET',
             headers: {
                 "token": localStorage.getItem("token")
