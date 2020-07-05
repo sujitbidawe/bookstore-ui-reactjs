@@ -4,6 +4,13 @@ $secondary-color: rgb(255, 255, 255);
 $tertiary-color: rgb(180, 178, 178);
 $quaternary-color: rgb(114, 134, 189);
 
+:export {
+  primarycolor: $primary-color;
+  secondarycolor: $secondary-color;
+  tertiarycolor: $tertiary-color;
+  quaternarycolor: $quaternary-color;
+}
+
 @media screen and (max-width: 1080px) {
   .NavButtons {
     overflow: visible;

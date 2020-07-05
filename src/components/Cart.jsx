@@ -3,8 +3,15 @@ import BookData from './BookDataLayer';
 import CustomerDetails from './Customerdetails';
 import { connect } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
+import variables from '../App.scss';
 
 var bookData = new BookData();
+const CSS = {
+    primarycolor: variables.primarycolor,
+    secondarycolor: variables.secondarycolor,
+    tertiarycolor: variables.tertiarycolor,
+    quaternarycolor: variables.quaternarycolor
+}
 
 class Cart extends Component {
     constructor() {
@@ -201,7 +208,7 @@ class Cart extends Component {
                 <div className="cart">
                     <br />
                     <div style={{ border: "1px groove grey", marginBottom: "20px" }}>
-                        <h1 style={{ color: "brown", paddingLeft: "20px" }}>
+                        <h1 style={{ color: CSS.primarycolor, paddingLeft: "20px" }}>
                             Cart( {this.state.bookList.length} )
                     </h1>
                         {this.state.bookList.map(book => (
@@ -224,7 +231,7 @@ class Cart extends Component {
                             </div>
                         ))}
                         <div className="purchaseButton" >
-                            <button onClick={this.toggleDetailsView} style={{ height: "30px", width: "200px", backgroundColor: "rgb(114, 134, 189)", color: "white", fontSize: "25px" }}> PLACE ORDER </button>
+                            <button onClick={this.toggleDetailsView} style={{ height: "30px", width: "200px", backgroundColor: CSS.quaternarycolor, color: CSS.secondarycolor, fontSize: "25px" }}> PLACE ORDER </button>
                         </div>
                     </div>
                 </div>
@@ -260,7 +267,7 @@ class Cart extends Component {
                                 </div>
                             </form>
                             <div className="purchaseButton" >
-                                <button onClick={this.toggleSummaryView} style={{ height: "30px", width: "200px", backgroundColor: "rgb(114, 134, 189)", color: "white", fontSize: "25px" }}> CONTINUE </button>
+                                <button onClick={this.toggleSummaryView} style={{ height: "30px", width: "200px", backgroundColor: CSS.quaternarycolor, color: CSS.secondarycolor, fontSize: "25px" }}> CONTINUE </button>
                             </div>
                         </div> : null}
                 </div>

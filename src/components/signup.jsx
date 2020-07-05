@@ -1,8 +1,15 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import BookData from './BookDataLayer';
+import variables from '../App.scss';
 
 var bookData = new BookData();
+const CSS = {
+    primarycolor: variables.primarycolor,
+    secondarycolor: variables.secondarycolor,
+    tertiarycolor: variables.tertiarycolor,
+    quaternarycolor: variables.quaternarycolor
+}
 
 export class SignUp extends Component {
     constructor(props) {
@@ -98,7 +105,7 @@ export class SignUp extends Component {
                     </Link>
                 </div>
                 <div style={{ padding: "10px", margin: "5px", display: "flex", flexDirection: "row", fontSize: "20px" }}>
-                    <a style={{ color: "white", padding: "5px", textDecoration: "none" }} href="/signin">Already have an account? signin!</a>
+                    <a style={{ color: CSS.secondarycolor, padding: "5px", textDecoration: "none" }} href="/signin">Already have an account? signin!</a>
                 </div>
             </div>
         )

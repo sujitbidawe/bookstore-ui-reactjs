@@ -1,8 +1,15 @@
 import React, { Component } from "react";
 import BookData from './BookDataLayer';
 import { connect } from 'react-redux';
+import variables from '../App.scss';
 
 var bookData = new BookData();
+const CSS = {
+    primarycolor: variables.primarycolor,
+    secondarycolor: variables.secondarycolor,
+    tertiarycolor: variables.tertiarycolor,
+    quaternarycolor: variables.quaternarycolor
+}
 
 class Home extends Component {
     constructor() {

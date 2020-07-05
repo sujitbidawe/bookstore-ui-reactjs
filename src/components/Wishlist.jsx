@@ -2,8 +2,15 @@ import React, { Component } from "react";
 import BookData from './BookDataLayer';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import variables from '../App.scss';
 
 var bookData = new BookData();
+const CSS = {
+    primarycolor: variables.primarycolor,
+    secondarycolor: variables.secondarycolor,
+    tertiarycolor: variables.tertiarycolor,
+    quaternarycolor: variables.quaternarycolor
+}
 
 class WishList extends Component {
     constructor() {
@@ -61,7 +68,7 @@ class WishList extends Component {
         return (
             localStorage.getItem("token") != null ?
             <div className="wishList">
-                <h1 style={{ color: "brown" }}>
+                <h1 style={{ color: CSS.primarycolor }}>
                     WishList({this.state.bookList.length})
                 </h1>
                 {this.state.bookList.map(book => (
@@ -74,7 +81,7 @@ class WishList extends Component {
                             <h5 style={{ height: "0px", opacity: '0.5' }}>By {book.author}</h5>
                             <h4 style={{ height: "0px" }}>Rs. {book.price}</h4></div>
                         <div>
-                            <button onClick={() => this.handleClickAddToCart(book.id)} style={{ backgroundColor: 'brown', color: 'white', width: '110px', height: '25px' }}>ADD TO CART</button>
+                            <button onClick={() => this.handleClickAddToCart(book.id)} style={{ backgroundColor: CSS.primarycolor, color: CSS.secondarycolor, width: '110px', height: '25px' }}>ADD TO CART</button>
                             <button onClick={() => this.handleRemoveFromWishList(book.id)} style={{ fontFamily: "fontawesome", width: '100px', height: '25px', marginLeft: '3.5px' }}>&#xf08A; REMOVE</button>
                         </div>
                     </div>
